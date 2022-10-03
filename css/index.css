@@ -165,7 +165,7 @@ body::-webkit-scrollbar-thumb {
   text-align: right;
 }
 .contenedor-texto-inicio {
-  max-width: 65%;
+  max-width: 80%;
   padding: 10px 0;
   color: #fff;
 }
