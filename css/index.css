@@ -383,9 +383,12 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
   }
   .contenedor-texto-skills{
+    width: 90%;
+    padding: 0;
+  }
+  .contenedor-imagen-about {
     width: 100%;
   }
-
   .imagen-about {
     width: 50vw;
     height: 50vw;
