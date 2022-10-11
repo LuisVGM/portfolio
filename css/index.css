@@ -20,6 +20,8 @@
 
 .menu-boton {
   color: #fff;
+  fill: white;
+  text-decoration: none;
 }
 .menu-boton:hover {
   color: #9E9EA7;
@@ -166,7 +168,7 @@ body::-webkit-scrollbar-thumb {
   text-align: right;
 }
 .contenedor-texto-inicio {
-  max-width: 65%;
+  max-width: 80%;
   padding: 10px 0;
   color: #fff;
 }
@@ -287,11 +289,6 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   border-radius: 5px;
 }
-.progreso-animation {
-  height: 10px;
-  background-color: #2895F9;
-  border-radius: 5px;
-}
 .progreso-95 {
   height: 10px;
   width: 95%;
@@ -351,8 +348,30 @@ body::-webkit-scrollbar-thumb {
 .left {
   text-align: left;
 }
-
 /*EMAIL*/
+.technologies {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 80%;
+  height: auto;
+  margin: 10px 0;
+}
+.flex-reverse {
+  flex-direction: row-reverse;
+  margin-left: 20%;
+}
+.icon {
+  fill: #504d4d;
+  width: 2vw;
+}
+.icon-menu {
+  width: 1.8vw;
+}
+.tecnology {
+  width: auto;
+  height: 10%;
+  margin: 0 5px;
+}
 
 /* R E S P O N S I V E*/
 
@@ -399,6 +418,9 @@ body::-webkit-scrollbar-thumb {
   .imagen-about {
     width: 50vw;
     height: 50vw;
+    object-fit: cover;
+    filter: grayscale(100%);
+    border-radius: 50%;
   }
 
   .menu-ul {
@@ -443,7 +465,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
   }
   .contenedor-project {
-    height: 180vh;
+    height: 200vh;
   }
   .project-name{
     width: 100%;
@@ -468,5 +490,17 @@ body::-webkit-scrollbar-thumb {
   }
   .icon-social {
     width: 10vw;
+  }
+  .technologies {
+    width: 100%;
+  }
+  .icon {
+    width: 6vw;
+  }
+  .flex-reverse {
+    margin-left: 0;
+  }
+  .icon-menu {
+    width: 6vw;
   }
 }
