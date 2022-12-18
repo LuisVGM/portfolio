@@ -23,7 +23,16 @@
   <div class="contenedor-page">
     <!--M E N U-->
     <div class="menu">
+      <!--BOTOB DESCARGA-->
+      <ul>
+        <li class="menu-li">
+          <a class="menu-boton" title="Inicio" id="myBtn" style="cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-menu" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zM432 456c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg>
+          </a>
+        </li>
+      </ul>
       
+      <!--BOTON DESCARGA-->
       <ul class="menu-ul">
         <li class="menu-li">
           <a href="#home" class="menu-boton" title="Inicio">
@@ -62,10 +71,33 @@
           <p class="titulo-home">Web Developer</p>
         </div>
       </div>
+
+
+  <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p class="subtitulo">Instalar APP</p><br>
+    </div>
+    <div class="modal-body">
+      <p class="texto">Descarga la aplicación</p><br>
+      <center>
+        <button class="btn btn-success download" type="button" style="cursor: pointer;">Descargar</button>
+      </center>
+      <br>
+    </div>
+  </div>
+
+</div>
+
+</div>
       <!--A B O U T - M E -->
       <div class="contenedor-about" id="about">
         <div class="contenedor-imagen-about">
-          <img src="img/me.jpeg" alt="Valentin" class="imagen-about">
+          <img src="img/valentin.jpg" alt="Valentin" class="imagen-about">
         </div>
         <div class="contenedor-texto-about">
           <p class="titulo">Soy Valentin</p><br>
@@ -361,6 +393,91 @@
         }
       }
     }
-  </script>
+    
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    //D O W N L O A D
+    var vPrompt;
+      window.addEventListener('beforeinstallprompt', function (e){
+        e.preventDefault();
+        vPrompt = e;
+        AgregarClickMostrar();
+    });
+    function AgregarClickMostrar(){
+      var ejemploprompt = document.querySelector(".download");
+      ejemploprompt.addEventListener("click", MostrarPrompt);
+    }
+
+    function MostrarPrompt(){
+      vPrompt.prompt();
+      vPrompt.userChoice.then(function(choiceResult){
+            if(choiceResult.outcome === "accepted")
+                console.log("El usuario aceptó la instalación");
+            else
+                console.log("El usuario ignoró la acción");
+                vPrompt = null;
+        })
+    }
+    //D O W N L O A D
+    </script>
+    <script>
+      window.addEventListener("appinstalled", () => {
+        var ejemploprompt = document.querySelector(".download");
+        ejemploprompt.style.display = "none";
+        deferredPrompt = null;
+        console.log("PWD fue instalado");
+      });
+    </script>
+    <script>
+      window
+        .matchMedia("(display-mode: standalone)")
+        .addEventListener("change", (evt) => {
+          let displayMode = "browser";
+          if (evt.matches) {
+            displayMode = "standalone";
+          }
+          console.log("DISPLAY_MODE_CHANGED", displayMode);
+        });
+    </script>
+    <script>
+      //SIRVE PARA DETECTAR SI FUE INSTALADO EN DISPOSITIVOS ANDROID
+      function getPWADisplayMode() {
+        const isStandalone = window.matchMedia(
+          "(display-mode:standalone)"
+        ).matches;
+        if (document.referrer.startsWith("android-app://")) {
+          console.log("twa");
+        } else if (navigator.standalone || isStandalone) {
+          console.log("standalone");
+        }
+        //console.log('browser');
+      }
+      getPWADisplayMode();
+    </script>
 </body>
 </html>
